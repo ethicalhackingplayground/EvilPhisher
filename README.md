@@ -1,8 +1,8 @@
 # EvilPhisher
-Social Media Phisher
+😈 **Social Media Phisher** 😈
 
 ## Description
-> EvilPhisher is a social media phishing program written in python that allows Ethical hackers to clone websites and harvest peoples passwords.
+> ***EvilPhisher is a social media phishing program written in python that allows Ethical hackers to clone websites and harvest peoples passwords.***
 
 ## How to install?
 `git clone https://github.com/ethicalhackingplayground/EvilPhisher.git`
@@ -20,5 +20,5 @@ Social Media Phisher
 ![Screenshot](evilphisher04.PNG)
 ![Screenshot](evilphisher05.PNG)
 
-## Enjoy. >:)
+## Enjoy. 😃
 
