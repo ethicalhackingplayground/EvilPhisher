@@ -1,0 +1,100 @@
+/* Fonts */
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-UltraLight.woff2") format("woff2"),
+       url("./AvenirNext-UltraLight.woff") format("woff"),
+       url("./AvenirNext-UltraLight.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-UltraLightItalic.woff2") format("woff2"),
+       url("./AvenirNext-UltraLightItalic.woff") format("woff"),
+       url("./AvenirNext-UltraLightItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-Regular.woff2") format("woff2"),
+       url("./AvenirNext-Regular.woff") format("woff"),
+       url("./AvenirNext-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-Medium.woff2") format("woff2"),
+       url("./AvenirNext-Medium.woff") format("woff"),
+       url("./AvenirNext-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-MediumItalic.woff2") format("woff2"),
+       url("./AvenirNext-MediumItalic.woff") format("woff"),
+       url("./AvenirNext-MediumItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-DemiBold.woff2") format("woff2"),
+       url("./AvenirNext-DemiBold.woff") format("woff"),
+       url("./AvenirNext-DemiBold.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-DemiBoldItalic.woff2") format("woff2"),
+       url("./AvenirNext-DemiBoldItalic.woff") format("woff"),
+       url("./AvenirNext-DemiBoldItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-DemiBold.woff2") format("woff2"),
+       url("./AvenirNext-DemiBold.woff") format("woff"),
+       url("./AvenirNext-DemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-DemiBoldItalic.woff2") format("woff2"),
+       url("./AvenirNext-DemiBoldItalic.woff") format("woff"),
+       url("./AvenirNext-DemiBoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-Bold.woff2") format("woff2"),
+       url("./AvenirNext-Bold.woff") format("woff"),
+       url("./AvenirNext-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("./AvenirNext-BoldItalic.woff2") format("woff2"),
+       url("./AvenirNext-BoldItalic.woff") format("woff"),
+       url("./AvenirNext-BoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
