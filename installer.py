@@ -59,6 +59,5 @@ subprocess.call(["unzip", "ngrok-stable-linux-amd64.zip"])
 subprocess.call(["rm", "ngrok-stable-linux-amd64.zip"])
 
 
-print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\n\n Complete..")
-time.sleep(5)
-subprocess.call(["python", "evilphisher.py"])
+print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\n\n Complete..\n")
+print(Style.RESET_ALL + Style.BRIGHT + Fore.LIGHT_BLUE + "Run: python evilphisher.py")
