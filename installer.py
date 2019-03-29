@@ -9,6 +9,7 @@
 Import Modules
 """
 import os
+import time
 import subprocess
 try:
 
@@ -17,6 +18,7 @@ except ImportError:
     subprocess.call["pip", "install", "colorama"]
 
 
+subprocess.call(["clear"])
 print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + """
 
 
@@ -34,6 +36,7 @@ print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + """
 
 raw_input(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "\t\t\t[PRESS ENTER TO INSTALL]")
 
+print(Style.RESET_ALL + Style.BRIGHT + Fore.CYAN)
 
 # Created the directory
 if os.path.isdir("/root/EvilPhisher/creds/") == False:
@@ -56,6 +59,6 @@ subprocess.call(["unzip", "ngrok-stable-linux-amd64.zip"])
 subprocess.call(["rm", "ngrok-stable-linux-amd64.zip"])
 
 
-print(Style.RESET_ALL + Style.BRIGHT + Fore.CYAN + "\n\n Complete..")
+print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\n\n Complete..")
 time.sleep(5)
 subprocess.call(["python", "evilphisher.py"])
