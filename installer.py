@@ -60,4 +60,4 @@ subprocess.call(["rm", "ngrok-stable-linux-amd64.zip"])
 
 
 print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\n\n Complete..\n")
-print(Style.RESET_ALL + Style.BRIGHT + Fore.LIGHT_BLUE + "Run: python evilphisher.py")
+print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "Run: python evilphisher.py")
