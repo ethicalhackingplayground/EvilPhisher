@@ -5,8 +5,8 @@
 > ***EvilPhisher is a social media phishing program written in python that allows Ethical hackers to clone websites and harvest peoples passwords.***
 
 ## Changes
-> ***You can know phish for steam passwords***
-> ***Https only***
+* Implemented Steam Phishing.
+* Https only instead of both.
 
 ## How to install?
 `git clone https://github.com/ethicalhackingplayground/EvilPhisher.git`
