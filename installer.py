@@ -50,6 +50,9 @@ subprocess.call(["unzip", "ngrok-stable-linux-amd64.zip"])
 # Remove the zip file
 subprocess.call(["rm", "ngrok-stable-linux-amd64.zip"])
 
+# Installing mail
+subprocess.call(['apt-get', 'install', 'mailutils'])
+
 
 print("\n\n Complete..\n")
 print("Run: python evilphisher.py")
