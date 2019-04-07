@@ -5,6 +5,8 @@
 > ***EvilPhisher is a social media phishing program written in python that allows Ethical hackers to clone websites and harvest peoples passwords.***
 
 ## Changes
+* Deploy to email with email Spoofing.
+* Deploy to Facebook messenger.
 * Implemented Steam Phishing.
 * Https only instead of both.
 
